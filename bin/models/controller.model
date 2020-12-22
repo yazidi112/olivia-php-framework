@@ -1,0 +1,7 @@
+<?php
+class #name#Controller extends Controller{
+
+    public function index(){
+        $this->render("views/#name#/index.html.php",[]);
+    }
+}
