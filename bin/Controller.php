@@ -42,12 +42,13 @@ class Controller{
     }
 
     /*
-    * @.
+    * @. 
     * Vider les controlleurs
     */
     public function clear(){
         echo "Vider les controlleurs: \n";
         echo "ça marche!!";
+        echo " modification de nadia";
         echo ".................................\n";
         echo "Liste des controlleurs est vide.\n";
         echo ".................................\n";
