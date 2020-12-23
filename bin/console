@@ -1,0 +1,16 @@
+<?php
+
+use Zaytona\Commande;
+
+require 'Controller.php';
+require 'Commande.php';
+
+array_shift($argv);
+$commande = new Commande($argv);
+$commande->trait();
+
+
+
+
+
+

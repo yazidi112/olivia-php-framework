@@ -1,1 +1,0 @@
-<h2>Welcome to category Controller</h2>
