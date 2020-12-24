@@ -1,10 +1,10 @@
 <?php
 
-use Zaytona\Commande;
+use Olivia\Commande;
 
-require 'class/Controller.php';
-require 'class/Commande.php';
-require 'class/Entity.php';
+require 'Core/application/class/Controller.php';
+require 'Core/application/class/Commande.php';
+require 'Core/application/class/Entity.php';
 
 array_shift($argv);
 $commande = new Commande($argv);

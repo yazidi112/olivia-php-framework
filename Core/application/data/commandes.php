@@ -7,6 +7,7 @@ return Array(
     "delete:entity",
     "create:form",
     "create:crud",
-    "create:user"
+    "create:user",
+    "server:run"
 );
 

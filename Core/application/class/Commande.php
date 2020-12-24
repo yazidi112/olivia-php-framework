@@ -1,9 +1,9 @@
 <?php
 
-namespace zaytona;
+namespace Olivia;
 
-use zaytona\Controller;
-use zaytona\Entity;
+use Olivia\Controller;
+use Olivia\Entity;
 
 class Commande{
     
@@ -12,7 +12,7 @@ class Commande{
 
     public function __construct($commande){
         $this->commande = $commande;
-        $this->commandes = require "bin/data/commandes.php";
+        $this->commandes = require "Core/application/data/commandes.php";
         $this->hello();
     }
 
@@ -38,10 +38,14 @@ class Commande{
                 case "delete:entity":
                     $entity = new Entity($this->commande[1]);
                     $entity->delete();
-                    break; 
+                    break;
+                case "server:run":
+                    echo "Development Server is running at http://localhost:8080 [Ctrl+Click to Open]\n";
+                    echo system("php -S localhost:8080 -t public");
+                    break;  
             }
         }else{
-            die("Commande introuvable !");
+            die("bad request ! ");
         }
     }
 
@@ -54,8 +58,8 @@ class Commande{
 
     public function hello(){
         echo "_____________________________________________\n";
-        echo "      Welcome to Zytona PHP Framework 1.0    \n";
-        echo "-- For more informations visit www.zaytona.com --\n";
+        echo "      Welcome to Olivia PHP Framework 1.0    \n";
+        echo "-- For more informations visit www.Olivia.com --\n";
         echo "_____________________________________________\n";
     }
 }

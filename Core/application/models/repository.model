@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Repository;
+
 class #name#Repository extends Repository{
 
 }

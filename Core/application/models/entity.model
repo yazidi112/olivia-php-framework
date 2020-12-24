@@ -1,5 +1,8 @@
 <?php
-class #name# extends Entity{
+
+namespace App\Entity;
+
+class #name#{
     
     #atributes#
 

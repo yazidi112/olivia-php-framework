@@ -1,6 +1,5 @@
 <?php
 namespace App;
-
-class Entity{
+abstract  class Entity{
 
 }

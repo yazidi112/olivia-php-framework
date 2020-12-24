@@ -1,6 +1,8 @@
 <?php
-namespace App;
-class Controller{
+
+namespace App\Controller;
+
+abstract class  Controller{
 
     private $routes;
     public function __construct(){
@@ -8,7 +10,7 @@ class Controller{
     }
     public function render($view,$data){
         ob_start();
-        require $view;
+        require "../$view";
         $contenu = ob_get_contents();
         ob_end_clean();
         require '../views/parent.html.php';
