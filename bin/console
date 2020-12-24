@@ -2,8 +2,9 @@
 
 use Zaytona\Commande;
 
-require 'Controller.php';
-require 'Commande.php';
+require 'class/Controller.php';
+require 'class/Commande.php';
+require 'class/Entity.php';
 
 array_shift($argv);
 $commande = new Commande($argv);

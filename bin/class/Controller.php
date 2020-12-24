@@ -42,8 +42,10 @@ class Controller{
     }
 
     /*
-    * @.
-    * Vider les controlleurs
+    * @author:
+    * @created at: 
+    * @updated at: 
+    * @description: Vider les controlleurs
     */
     public function clear(){
         echo "Vider les controlleurs: \n";
@@ -53,15 +55,5 @@ class Controller{
         echo ".................................\n";
     }
 
-    /*
-    * Suppression d'un répertoire qui contient des fichiers
-    */
-    public static function delTree($dir) {
-        
-        $files = array_diff(scandir($dir), array('.','..'));
-        foreach ($files as $file) {
-            (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file");
-        }
-        return rmdir($dir);
-    }
+    
 }

@@ -4,6 +4,7 @@ return Array(
     "delete:controller",
     "clear:controller",
     "create:entity",
+    "delete:entity",
     "create:form",
     "create:crud",
     "create:user"

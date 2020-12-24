@@ -1,0 +1,8 @@
+<?php
+class #name# extends Entity{
+    
+    #atributes#
+
+    #gettersetter#
+    
+}

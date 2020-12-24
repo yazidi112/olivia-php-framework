@@ -1,0 +1,9 @@
+    
+    public function get#name#(){
+        return $this->#name#;
+    }
+
+    public function set#name#($#name#){
+        $this->#name# = $#name#;
+        return $this;
+    }

@@ -3,6 +3,7 @@
 namespace zaytona;
 
 use zaytona\Controller;
+use zaytona\Entity;
 
 class Commande{
     
@@ -11,11 +12,9 @@ class Commande{
 
     public function __construct($commande){
         $this->commande = $commande;
-        $this->commandes = require "commandes.php";
+        $this->commandes = require "bin/data/commandes.php";
         $this->hello();
     }
-
-    
 
     public function trait(){
         if($this->is_exists()){
@@ -32,9 +31,17 @@ class Commande{
                     $controller = new Controller($this->commande[1]);
                     $controller->clear();
                     break;
-                default:
-                    die("Commande introuvable !");
+                case "create:entity":
+                    $entity = new Entity($this->commande[1]);
+                    $entity->create();
+                    break;
+                case "delete:entity":
+                    $entity = new Entity($this->commande[1]);
+                    $entity->delete();
+                    break; 
             }
+        }else{
+            die("Commande introuvable !");
         }
     }
 
