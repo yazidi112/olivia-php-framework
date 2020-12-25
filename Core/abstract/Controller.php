@@ -6,14 +6,14 @@ abstract class  Controller{
 
     private $routes;
     public function __construct(){
-        $this->routes = require '../Config/routes.php';
+        $this->routes = require '../config/routes.php';
     }
     public function render($view,$data){
         ob_start();
         require "../$view";
         $contenu = ob_get_contents();
         ob_end_clean();
-        require '../views/parent.html.php';
+        require '../Views/parent.html.php';
     }
 
     public function redirect($routename){

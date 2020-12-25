@@ -12,7 +12,7 @@ class Commande{
 
     public function __construct($commande){
         $this->commande = $commande;
-        $this->commandes = require "Core/application/data/commandes.php";
+        $this->commandes = require "Core/generator/data/commandes.php";
         $this->hello();
     }
 
@@ -58,7 +58,7 @@ class Commande{
 
     public function hello(){
         echo "_____________________________________________\n";
-        echo "      Welcome to Olivia PHP Framework 1.0    \n";
+        echo "              Olivia PHP Framework 1.0       \n";
         echo "-- For more informations visit www.Olivia.com --\n";
         echo "_____________________________________________\n";
     }

@@ -26,11 +26,11 @@ class Entity{
                 $type = "string";
             }
 
-            $attributes     .= str_replace("#name#",$attribute,file_get_contents("Core/application/models/entity.attributes.model"));
-            $gettersetters  .= str_replace("#name#",$attribute,file_get_contents("Core/application/models/entity.gettersetter.model"));
+            $attributes     .= str_replace("#name#",$attribute,file_get_contents("Core/generator/models/entity.attributes.model"));
+            $gettersetters  .= str_replace("#name#",$attribute,file_get_contents("Core/generator/models/entity.gettersetter.model"));
         }
         
-        $entityContent      = file_get_contents("Core/application/models/entity.model");
+        $entityContent      = file_get_contents("Core/generator/models/entity.model");
         $entityContent      = str_replace("#name#",$this->name,$entityContent);
         $entityContent      = str_replace("#atributes#",$attributes,$entityContent);
         $entityContent      = str_replace("#gettersetter#",$gettersetters,$entityContent);
@@ -38,7 +38,7 @@ class Entity{
         file_put_contents ($entityFile,$entityContent);
 
         $repositoryFile     = "Repository/".ucfirst($this->name)."Repository.php";
-        $repositoryContent  = str_replace("#name#",$this->name,file_get_contents("Core/application/models/repository.model"));
+        $repositoryContent  = str_replace("#name#",$this->name,file_get_contents("Core/generator/models/repository.model"));
         file_put_contents ($repositoryFile,$repositoryContent);
         
         echo ".................................\n";

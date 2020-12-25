@@ -18,10 +18,10 @@ class Controller{
     public function create(){
         echo "Création d'un nouveau controlleur: \n";
         $controllerFile         = "Controller/{$this->name}Controller.php";
-        $controllerContent      = str_replace("#name#",$this->name,file_get_contents("Core/application/models/controller.model"));
+        $controllerContent      = str_replace("#name#",$this->name,file_get_contents("Core/generator/models/controller.model"));
         file_put_contents ($controllerFile,$controllerContent);
         if(!is_dir("Views/{$this->name}")) mkdir("Views/{$this->name}");
-        $indexhtmlContent       = str_replace("#name#",$this->name,file_get_contents("Core/application/models/index.html.model"));
+        $indexhtmlContent       = str_replace("#name#",$this->name,file_get_contents("Core/generator/models/index.html.model"));
         file_put_contents ("Views/{$this->name}/index.html.php",$indexhtmlContent);
         echo ".................................\n";
         echo "{$this->name} est bien créé.\n";
