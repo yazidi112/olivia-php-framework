@@ -5,6 +5,7 @@ use Olivia\Commande;
 require 'Core/generator/class/Controller.php';
 require 'Core/generator/class/Commande.php';
 require 'Core/generator/class/Entity.php';
+require 'Core/generator/helpers.php'; 
 
 array_shift($argv);
 $commande = new Commande($argv);

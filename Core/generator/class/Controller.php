@@ -1,4 +1,5 @@
 <?php
+
 namespace Olivia;
 
 /*
@@ -35,7 +36,7 @@ class Controller{
         echo "Suppression d'un controlleur existant: \n";
         $controllerFile = "Controller/{$this->name}Controller.php";
         if(file_exists($controllerFile))unlink($controllerFile);
-        if(is_dir("Views/{$this->name}")) $this->delTree("Views/{$this->name}");
+        if(is_dir("Views/{$this->name}")) \delTree("Views/{$this->name}");
         echo ".................................\n";
         echo "{$this->name} est bien supprimé.\n";
         echo ".................................\n";
