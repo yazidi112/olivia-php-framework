@@ -18,8 +18,8 @@ class Entity{
         echo "Création d'une nouvelle entité : \n";
         $entityFile         = "Entity/".ucfirst($this->name).".php";
         if(file_exists($entityFile)){
-            $input = readline("Entité déja exixts voulez voues la remplacer ? [o|n]:");
-            if($input == "n"){
+            $input = readline("Entité déja existe voulez vous la remplacer ? [o|n]:");
+            if($input != "o"){
                 return false;
             }
         }
@@ -36,7 +36,7 @@ class Entity{
             do{
                 $type       = readline("Saisir son type [int|float|string|text|date|relation] (String par défaut): ");
             
-                if($type == ''){
+                if($type === ""){
                     $type = "string";
                 }
 
@@ -68,7 +68,7 @@ class Entity{
     }
 
     /*
-    * Suppression d'une entitie
+    * Suppression d'une entité
     */
     public function delete(){
         echo "Suppression d'une entite: \n";
