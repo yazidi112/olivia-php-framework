@@ -41,7 +41,7 @@ class Commande{
                     $entity->delete();
                     break;
                 case "create:migration":
-                    $migration = new Migration($this->commande[1]);
+                    $migration = new Migration();
                     $migration->create();
                     break;
                 case "server:run":
