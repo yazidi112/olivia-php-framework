@@ -45,7 +45,9 @@ class Commande{
                     break;  
             }
         }else{
-            die("bad request ! ");
+            echo "+++++++++++++++++++++++++\n";
+            echo "+ Commande incorrect !\n";
+            echo "+++++++++++++++++++++++++\n";
         }
     }
 

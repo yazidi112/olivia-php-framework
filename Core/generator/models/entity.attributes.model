@@ -1,2 +1,6 @@
+    
+    /*
+    * @ORM\#name#\#type#
+    */
     private  $#name#;
     
