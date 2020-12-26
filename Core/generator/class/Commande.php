@@ -4,6 +4,7 @@ namespace Olivia;
 
 use Olivia\Controller;
 use Olivia\Entity;
+use Olivia\Migration;
 
 class Commande{
     
@@ -38,6 +39,10 @@ class Commande{
                 case "delete:entity":
                     $entity = new Entity($this->commande[1]);
                     $entity->delete();
+                    break;
+                case "create:migration":
+                    $migration = new Migration($this->commande[1]);
+                    $migration->create();
                     break;
                 case "server:run":
                     echo "Development Server is running at http://localhost:8080 [Ctrl+Click to Open]\n";

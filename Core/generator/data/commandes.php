@@ -8,6 +8,7 @@ return Array(
     "create:form",
     "create:crud",
     "create:user",
-    "server:run"
+    "server:run",
+    "create:migration"
 );
 
