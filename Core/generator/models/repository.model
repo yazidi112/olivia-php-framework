@@ -5,6 +5,7 @@ namespace App\Repository;
 class #name#Repository extends Repository{
 
     public function __construct(){
+        parent::__construct();
         $this->table = "#name#";
     }
 }
