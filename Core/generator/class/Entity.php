@@ -1,4 +1,5 @@
 <?php
+
 namespace Olivia;
 
 class Entity{
@@ -9,36 +10,56 @@ class Entity{
         $this->name = $name;
     }
 
+    /*
+    * Creation d'une entité
+    */
+
     public function create(){
-        echo "Création d'une nouvelle entitie : \n";
+        echo "Création d'une nouvelle entité : \n";
         $entityFile         = "Entity/".ucfirst($this->name).".php";
+        if(file_exists($entityFile)){
+            $input = readline("Entité déja existe voulez vous la remplacer ? [o|n]:");
+            if($input != "o"){
+                return false;
+            }
+        }
         $attributes         = "";
         $gettersetters      = "";
 
         while(true){
             $attribute      = readline("Saisir un nouvel attribut (ou cliquer sur entrer pour quitter): ");
+
             if($attribute == ''){
                 break;
             }
-            $type           = readline("Saisir son type (String par défaut): ");
-            
-            if($type == ''){
-                $type = "string";
-            }
 
-            $attributes     .= str_replace("#name#",$attribute,file_get_contents("Core/application/models/entity.attributes.model"));
-            $gettersetters  .= str_replace("#name#",$attribute,file_get_contents("Core/application/models/entity.gettersetter.model"));
+            do{
+                $type       = readline("Saisir son type [int|float|string|text|date|relation] (String par défaut): ");
+            
+                if($type === ""){
+                    $type = "string";
+                }
+
+            }while(!in_array($type,['int','float','string','text','date','relation']));
+
+            $attrs      = str_replace("#name#",$attribute,file_get_contents("Core/generator/models/entity.attributes.model"));
+            $attrs      = str_replace("#type#",$type,$attrs);
+            $attributes .= $attrs;
+
+            $getset  = str_replace("#name#",$attribute,file_get_contents("Core/generator/models/entity.gettersetter.model"));
+            $getset  = str_replace("#Name#",ucfirst($attribute),$getset);;
+            $gettersetters  .= $getset;
         }
         
-        $entityContent      = file_get_contents("Core/application/models/entity.model");
-        $entityContent      = str_replace("#name#",$this->name,$entityContent);
+        $entityContent      = file_get_contents("Core/generator/models/entity.model");
+        $entityContent      = str_replace("#name#",ucfirst($this->name),$entityContent);
         $entityContent      = str_replace("#atributes#",$attributes,$entityContent);
         $entityContent      = str_replace("#gettersetter#",$gettersetters,$entityContent);
 
         file_put_contents ($entityFile,$entityContent);
 
         $repositoryFile     = "Repository/".ucfirst($this->name)."Repository.php";
-        $repositoryContent  = str_replace("#name#",$this->name,file_get_contents("Core/application/models/repository.model"));
+        $repositoryContent  = str_replace("#name#",$this->name,file_get_contents("Core/generator/models/repository.model"));
         file_put_contents ($repositoryFile,$repositoryContent);
         
         echo ".................................\n";
@@ -47,7 +68,7 @@ class Entity{
     }
 
     /*
-    * Suppression d'une entitie
+    * Suppression d'une entité
     */
     public function delete(){
         echo "Suppression d'une entite: \n";
@@ -60,15 +81,6 @@ class Entity{
         echo ".................................\n";
     }
 
-    /*
-    * Suppression d'un répertoire qui contient des fichiers
-    */
-    public static function delTree($dir) {
-        
-        $files = array_diff(scandir($dir), array('.','..'));
-        foreach ($files as $file) {
-            (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file");
-        }
-        return rmdir($dir);
-    }
+    
+    
 }

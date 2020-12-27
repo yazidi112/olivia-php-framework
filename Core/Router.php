@@ -2,7 +2,7 @@
 
 class Router{
     
-    public function run(){
+    public static function run($default_route){
         $uri = explode('/',$_SERVER['REQUEST_URI']);
         array_shift($uri);
         if(!empty($uri[0])){
@@ -22,7 +22,7 @@ class Router{
                 die("../Controller/$controller.php"." est introuvable!");
             }    
         }else{
-            die("Page par defaut non configuré.");
+            header("Location: $default_route");
         }
            
     }

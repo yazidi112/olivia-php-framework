@@ -5,6 +5,6 @@ namespace App\Controller;
 class #name#Controller extends Controller{
 
     public function index(){
-        $this->render("views/#name#/index.html.php",[]);
+        $this->render("Views/#name#/index.html.php",[]);
     }
 }
