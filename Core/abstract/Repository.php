@@ -10,7 +10,9 @@ abstract  class Repository{
     public function __construct(){
         $this->cnx = \Database::getInstance();
     }
-
+    /*
+    * @imran yazidi 28/12/2020 
+    */
     public function findAll(){
         try {
             $query = $this->cnx->query("SELECT * FROM {$this->table}");
@@ -21,6 +23,9 @@ abstract  class Repository{
         }
     }
 
+    /*
+    * @imran yazidi 28/12/2020 
+    */
     public function find($id){
         try {
             $sql = "SELECT * FROM {$this->table} WHERE id = ?";
@@ -70,28 +75,41 @@ abstract  class Repository{
     */
     public function update($entite){
 
-        $affectation = [];
-
+        $fileds = [];
+        $values = [];
         $array  = (array)$entite;
         $keys   = array_keys($array);
+
+        // get value of id
         $id     = $array[$keys[0]];
         
+        // delete first element of array here it is ID
+        array_shift($array);
+
         foreach($array as $key=>$value){
-            $filed          = trim(str_replace(get_class($entite),"",$key));
-            $affectation[]  = "$filed = '$value'";
+            $fileds[] = trim(str_replace(get_class($entite),"",$key))." = ? ";
+            $values[] = $value;
         }
 
-        $sql = "UPDATE {$this->table} SET ".implode(",",$affectation)." WHERE id = $id";
+        // add ID to values array
+        $values[] = $id;
 
-        die($sql);
+        $sql = "UPDATE {$this->table} SET ".implode(",",$fileds)." WHERE id = ?";
          
         try {
-            $this->cnx->prepare($sql)->execute($values);
-        } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage() . "<br/>";
+            if($this->cnx->prepare($sql)->execute($values))
+                return true;
+            else
+                return false;
+        }catch (PDOException $e) {
+            print "Erreur : " . $e->getMessage() . "<br/>";
             exit;
         }
     }
+
+    /*
+    * @imran yazidi 29/12/2020 
+    */
 
     public function delete($id){
         try {

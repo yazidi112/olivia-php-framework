@@ -21,14 +21,20 @@ class articleController extends Controller{
         $article = new Article();
         $article->setTitre("test")->setContenu("test");
         $articleRepository = new ArticleRepository();
-        $articleRepository->create($article);
+        if($articleRepository->create($article))
+            echo "Article créé.";
+        else
+            echo "Erreur : Article ne peut pas êre ajouté.";
     }
 
     public function update(){
         $article = new Article();
-        $article->setId(44)->setTitre("test")->setContenu("test");
+        $article->setId(45)->setTitre("xx")->setContenu("xx")->setDate("2020-12-10");
         $articleRepository = new ArticleRepository();
-        $articleRepository->update($article);
+        if($articleRepository->update($article))
+            echo "Article modifié.";
+        else
+            echo "Erreur: Article ne peut être pas modifié.";
     }
 
     public function delete(){
