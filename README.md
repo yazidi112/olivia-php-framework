@@ -5,7 +5,14 @@ Olivia is a free MVC framework written in PHP. It provides modular and adaptable
 # Installation
 
 # Documentation 
-
+1. Création d'une entité
+    php olivia entity:create [entity_name]
+2. Création d'un controlleur:
+    php olivia controller:create [controller_name]
+3. Création de migration
+    php olivia migration:create
+4. Migration de structure de tables
+    php olivia migration:migrate
 # Community 
 
 # Contributing 
