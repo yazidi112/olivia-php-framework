@@ -1,1 +1,1 @@
-test
+CREATE TABLE IF NOT EXISTS Article (id integer AUTO_INCREMENT PRIMARY KEY, titre string, contenu text, date date)

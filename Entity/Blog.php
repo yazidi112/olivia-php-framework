@@ -3,23 +3,23 @@
 namespace App\Entity;
 
 /*
-* Entity: Article
+* Entity: Blog
 */
-class Article{
+class Blog{
 
     /*
-    * @ORM\id\integer
+    * @ORM\id\int(11)\primary
     */
     private $id;
 
         
     /*
-    * @ORM\titre\string
+    * @ORM\titre\varchar(255)
     */
     private  $titre;
         
     /*
-    * @ORM\contenu\text
+    * @ORM\contenu\varchar(255)
     */
     private  $contenu;
         

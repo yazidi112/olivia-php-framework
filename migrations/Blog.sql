@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS Blog (id int(11) AUTO_INCREMENT PRIMARY KEY, titre varchar(255), contenu varchar(255), date date)

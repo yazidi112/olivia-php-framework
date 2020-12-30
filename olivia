@@ -1,9 +1,4 @@
 <?php
-
-use Olivia\Controller;
-use Olivia\Entity;
-use Olivia\Migration;
-
 require 'Core/generator/class/Controller.php';
 require 'Core/generator/class/Entity.php';
 require 'Core/generator/class/Migration.php';
@@ -14,14 +9,24 @@ $array  = explode(":",$argv[0]);
 $class  = "Olivia\\".$array[0];
 $method = $array[1];
 
-if(!class_exists($class)){
-    echo "Erreur 00: Commande introuvable !\n";
+if(count($array) == 0){
+    echo "Erreur 01: Commande manquante !\n";
     exit;
 }
 
-$cmd = new $class($argv[1]);
+if(!class_exists($class)){
+    echo "Erreur 02: Commande incorrect !\n";
+    exit;
+}
+
+if(isset($argv[1])){
+    $cmd = new $class($argv[1]);
+}else{
+    $cmd = new $class();
+}
+
 if(!method_exists($cmd,$method)){
-    echo "Erreur 01: Commande introuvable !\n";
+    echo "Erreur 03: Commande incorrect !\n";
     exit;
 }
 

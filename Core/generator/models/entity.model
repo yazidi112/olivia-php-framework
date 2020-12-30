@@ -8,8 +8,7 @@ namespace App\Entity;
 class #name#{
 
     /*
-    * @ORM\id
-    * @ORM\id\integer
+    * @ORM\id\int(11)\primary\
     */
     private $id;
 

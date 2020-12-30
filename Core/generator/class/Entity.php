@@ -36,11 +36,15 @@ class Entity{
             do{
                 $type       = readline("Saisir son type [int|float|string|text|date|relation] (String par défaut): ");
             
-                if($type === ""){
-                    $type = "string";
+                if($type === "" || $type === "string"){
+                    $type = "varchar(255)";
                 }
 
-            }while(!in_array($type,['int','float','string','text','date','relation']));
+                if($type === "int"){
+                    $type = "int(11)";
+                }
+
+            }while(!in_array($type,['int(11)','float','varchar(255)','text','date','relation']));
 
             $attrs      = str_replace("#name#",$attribute,file_get_contents("Core/generator/models/entity.attributes.model"));
             $attrs      = str_replace("#type#",$type,$attrs);
