@@ -10,6 +10,21 @@ abstract  class Repository{
     public function __construct(){
         $this->cnx = \Database::getInstance();
     }
+
+    /*
+    * @imran yazidi 29/12/2020 
+    *  Create entity
+    */
+    public function createEntity($array){
+        $class = 'App\Entity\\'.$this->table;
+        $entite = new $class();
+        foreach($array as $key=>$value){
+            
+        }
+        
+        var_dump($entite);
+    }
+
     /*
     * @imran yazidi 28/12/2020 
     */
@@ -27,11 +42,12 @@ abstract  class Repository{
     * @imran yazidi 28/12/2020 
     */
     public function find($id){
+        $this->createObject();
         try {
             $sql = "SELECT * FROM {$this->table} WHERE id = ?";
             $sth = $this->cnx->prepare($sql);
             $sth->execute([$id]);
-            return  $sth->fetch();
+            return  $this->createEntity($sth->fetch());
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
@@ -112,6 +128,7 @@ abstract  class Repository{
     */
 
     public function delete($id){
+         
         try {
             $sql = "DELETE FROM {$this->table} WHERE id = ?";
             $sth = $this->cnx->prepare($sql);
