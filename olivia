@@ -1,16 +1,31 @@
 <?php
 
-use Olivia\Commande;
+use Olivia\Controller;
+use Olivia\Entity;
+use Olivia\Migration;
 
 require 'Core/generator/class/Controller.php';
-require 'Core/generator/class/Commande.php';
 require 'Core/generator/class/Entity.php';
 require 'Core/generator/class/Migration.php';
 require 'Core/generator/helpers.php'; 
 
-array_shift($argv);
-$commande = new Commande($argv);
-$commande->trait();
+array_shift($argv); 
+$array  = explode(":",$argv[0]);
+$class  = "Olivia\\".$array[0];
+$method = $array[1];
+
+if(!class_exists($class)){
+    echo "Erreur 00: Commande introuvable !\n";
+    exit;
+}
+
+$cmd = new $class($argv[1]);
+if(!method_exists($cmd,$method)){
+    echo "Erreur 01: Commande introuvable !\n";
+    exit;
+}
+
+$cmd->$method();
 
 
 
