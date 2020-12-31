@@ -13,16 +13,16 @@ abstract  class Repository{
 
     /*
     * @imran yazidi 29/12/2020 
-    *  Create entity
+    * Create entity
     */
     public function createEntity($array){
         $class = 'App\Entity\\'.$this->table;
         $entite = new $class();
         foreach($array as $key=>$value){
-            
+            $setter = "set$key";
+            $entite->$setter($value);
         }
-        
-        var_dump($entite);
+        return $entite;
     }
 
     /*
@@ -31,7 +31,11 @@ abstract  class Repository{
     public function findAll(){
         try {
             $query = $this->cnx->query("SELECT * FROM {$this->table}");
-            return $query->fetchAll();
+            $array = [];
+            while($row = $query->fetch()){
+                $array[] = $this->createEntity($row);
+            }
+            return $array;
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
@@ -42,7 +46,7 @@ abstract  class Repository{
     * @imran yazidi 28/12/2020 
     */
     public function find($id){
-        $this->createObject();
+        
         try {
             $sql = "SELECT * FROM {$this->table} WHERE id = ?";
             $sth = $this->cnx->prepare($sql);

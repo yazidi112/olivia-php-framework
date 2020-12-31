@@ -1,5 +1,7 @@
 <h2>Welcome to article Controller</h2>
-
- 
 <hr/>
-<?= $onearticle['titre'] ?>
+<?php
+    foreach($articles as $article){
+        echo $article->getTitre();
+    }
+?>

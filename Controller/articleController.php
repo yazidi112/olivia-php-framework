@@ -10,7 +10,8 @@ class articleController extends Controller{
     public function index(){
         $articleRepository = new ArticleRepository();
         $articles   = $articleRepository->findAll();
-        $onearticle = $articleRepository->find(39);
+        $onearticle = $articleRepository->find(49);
+
         $this->render("Views/article/index.html.php",[
             "articles"=>$articles,
             "onearticle" => $onearticle

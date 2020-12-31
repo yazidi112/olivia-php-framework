@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS Etudiant (id int(11) AUTO_INCREMENT PRIMARY KEY, nom varchar(255), prenom varchar(255), ville varchar(255), tel varchar(255), datenaissance date)
