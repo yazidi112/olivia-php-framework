@@ -84,7 +84,7 @@ abstract  class Repository{
             else
                 return false;
         } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage() . "<br/>";
+            print "Erreur : " . $e->getMessage();
             exit;
         }
          

@@ -2,6 +2,7 @@
 require 'Core/generator/class/Controller.php';
 require 'Core/generator/class/Entity.php';
 require 'Core/generator/class/Migration.php';
+require 'Core/generator/class/Form.php';
 require 'Core/generator/helpers.php'; 
 
 array_shift($argv); 
