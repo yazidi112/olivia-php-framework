@@ -8,13 +8,10 @@ abstract class  Controller{
     public function __construct(){
         $this->routes = require '../config/routes.php';
     }
-    public function render($view,$data){
+    public function render($view,$data,$parent = "parent"){
         extract($data);
-        ob_start();
-        require "../$view";
-        $contenu = ob_get_contents();
-        ob_end_clean();
-        require '../Views/parent.html.php';
+        $contenu = require "../$view";
+        require "../Views/$parent.html.php";
     }
 
     public function redirect($routename){

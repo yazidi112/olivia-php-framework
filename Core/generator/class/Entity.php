@@ -25,6 +25,7 @@ class Entity{
         }
         $attributes         = "";
         $gettersetters      = "";
+        $types              = ['float','varchar(255)','text','date','relation'];
 
         while(true){
             $attribute      = readline("Saisir un nouvel attribut (ou cliquer sur entrer pour quitter): ");
@@ -44,7 +45,19 @@ class Entity{
                     $type = "int(11)";
                 }
 
-            }while(!in_array($type,['int(11)','float','varchar(255)','text','date','relation']));
+                if($type === "relation"){
+                    while(true){
+                        $class = readline("Saisir l'entié de référence: ");
+                        if(!file_exists("Entity/$class.php")){
+                            echo "Entité introuvable ! ";
+                        }else{
+                            $type="int(11) FOREIGN KEY REFERENCES $class(id)";
+                            break;
+                        }
+                    }
+                }
+                echo (!in_array($type,$types) or !strpos($type, 'int(11)'));
+            }while(!in_array($type,$types) or !strpos($type, 'int(11)'));
 
             $attrs      = str_replace("#name#",$attribute,file_get_contents("Core/generator/models/entity.attributes.model"));
             $attrs      = str_replace("#type#",$type,$attrs);

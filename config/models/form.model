@@ -1,0 +1,4 @@
+<form method="post" action="#action#">
+    #inputs#
+    <button class="btn btn-primary mt-2"><?=$buttonlabel ?></button>
+</form>

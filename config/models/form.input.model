@@ -1,0 +1,2 @@
+    <label for="#name#">#name#</label>
+    <input type="#type#" id="#name#" name="#name#" class="form-control" />

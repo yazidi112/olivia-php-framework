@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS X (id int(11) AUTO_INCREMENT PRIMARY KEY, x varchar(255), y relation)

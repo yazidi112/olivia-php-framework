@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS Y (id int(11) AUTO_INCREMENT PRIMARY KEY, i varchar(255), p varchar(255))

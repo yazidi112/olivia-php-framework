@@ -54,7 +54,11 @@ class Migration{
 
         foreach($folder  as $file){
             $sql = file_get_contents("migrations/$file");
-            $pdo = new \PDO('mysql:host=localhost;dbname=blog', "root", "");
+            $host       = \Env::get("DB_HOST");
+            $db         = \Env::get("DB_NAME");
+            $user       = \Env::get("DB_USER");
+            $password   = \Env::get("DB_PASSWORD");
+            $pdo = new \PDO("mysql:host=$host;dbname=$db", $user, $password);
             if($pdo->query($sql)){
                 echo "Table $file créé.\n";
             }else{
